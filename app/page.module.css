@@ -1,7 +1,12 @@
 .page {
-  background-color: green;
+  background: linear-gradient(var(--primary), var(--secondary));
+  color: var(--lightest);
+
 }
 
-.test {
-  color: red;
+.main {}
+
+.footer {
+  padding: 2rem;
+  background-color: var(--darkest);
 }

@@ -24,6 +24,10 @@ export async function middleware(request: NextRequest) {
 
     const response = NextResponse.next()
     response.headers.set('userId', decoded.userId)
+    // this can then be referenced in components as such
+    // const h = await headers()
+    // const userId = h.get("userId")
+
     return response
 }
 
@@ -44,5 +48,5 @@ const checkJWT = async (token: string): Promise<JWTInfo> => {
 
 // See "Matching Paths" below to learn more
 export const config = {
-    matcher: '/journal',
+    matcher: ['/journal', '/'],
 }

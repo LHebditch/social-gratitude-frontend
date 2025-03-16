@@ -1,0 +1,27 @@
+.container {
+    border: 1px solid #c4c4c4;
+    border-radius: .45rem;
+    padding: .5rem;
+
+}
+
+.textarea {
+    resize: none;
+    overflow: hidden;
+    padding: 1rem;
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+}
+
+.full {
+    width: 100%;
+}
+
+.header {
+    width: 100%;
+    margin-bottom: .5rem;
+    display: inline-block;
+}

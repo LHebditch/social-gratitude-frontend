@@ -1,3 +1,13 @@
+:root {
+  --primary: #042630;
+  --secondary: #86b9b0;
+  /* --tertiary: #4c7273; */
+  --tertiary: #689a9b;
+
+  --lightest: #d0d6d6;
+  --darkest: #041421;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -19,5 +29,51 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+}
+
+form>section {
+  margin-bottom: 1rem;
+}
+
+form .error-message {
+  font-family: var(--font-geist-mono), Arial, Helvetica, sans-serif;
+  color: #ed4337;
+  font-size: .75rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+.subheader {
+  color: var(--tertiary);
+  font-weight: 300;
+  font-size: .85rem;
+}
+
+main:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+  z-index: -1;
+  background-image: url('/leaves.jpg');
+  background-size: cover;
+  background-blend-mode: color;
+}
+
+button {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }

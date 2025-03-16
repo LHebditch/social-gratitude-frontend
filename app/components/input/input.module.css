@@ -1,0 +1,34 @@
+.input {
+    padding: .5rem;
+}
+
+.hidden-description {
+    opacity: 0;
+    height: 0;
+}
+
+.full {
+    width: 100%;
+}
+
+.input-container {
+    display: flex;
+    flex: 1 1;
+}
+
+.input-container label {
+    padding: .5rem .5rem .5rem 0;
+}
+
+.input-container input {
+    width: 100%;
+    border: 1px solid #c4c4c4;
+}
+
+.input-container input:focus {
+    outline: thin solid;
+}
+
+.stacked {
+    flex-direction: column;
+}

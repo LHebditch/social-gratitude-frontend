@@ -1,0 +1,19 @@
+.button {
+    padding: 1rem 2rem;
+    background-color: var(--primary);
+    border: 2px solid var(--primary);
+    color: var(--secondary);
+    border-radius: .5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.full {
+    width: 100%;
+}
+
+.secondary {
+    color: var(--primary);
+    background-color: transparent;
+    font-weight: 600;
+}

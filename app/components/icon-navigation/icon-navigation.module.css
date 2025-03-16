@@ -1,0 +1,34 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    opacity: 0.75;
+    border: 3px solid var(--darkest);
+    border-radius: 100%;
+    margin: 0 .5rem;
+    padding: .5rem;
+}
+
+.icon-stroke {
+    stroke: var(--darkest);
+}
+
+.icon-fill {
+    stroke: var(--darkest);
+}
+
+.active {
+    opacity: 1;
+    background-color: var(--darkest);
+    border-color: transparent;
+}
+
+.active-stroke {
+    stroke: var(--secondary)
+}
+
+.active-fill {
+    stroke: var(--secondary)
+}
