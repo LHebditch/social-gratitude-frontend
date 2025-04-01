@@ -1,5 +1,8 @@
 .input {
-    padding: .5rem;
+    padding: .75rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--lightest);
+    border-radius: 0.25rem;
 }
 
 .hidden-description {
@@ -16,9 +19,6 @@
     flex: 1 1;
 }
 
-.input-container label {
-    padding: .5rem .5rem .5rem 0;
-}
 
 .input-container input {
     width: 100%;

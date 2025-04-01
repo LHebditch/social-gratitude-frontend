@@ -3,6 +3,7 @@
   --secondary: #86b9b0;
   /* --tertiary: #4c7273; */
   --tertiary: #689a9b;
+  --tertiary-rgb: 104, 154, 155;
 
   --lightest: #d0d6d6;
   --darkest: #041421;
@@ -55,9 +56,19 @@ h2 {
 }
 
 .subheader {
-  color: var(--tertiary);
+  color: #aacaca;
   font-weight: 300;
   font-size: .85rem;
+}
+
+.subheader.light {
+  color: var(--lightest);
+  font-weight: 300;
+  font-size: .85rem;
+}
+
+.pb {
+  padding-bottom: 1rem;
 }
 
 main:before {
@@ -76,4 +87,20 @@ main:before {
 
 button {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+h4.subheader {
+  font-size: 1rem;
+}
+
+.sitemap-link {
+  color: var(--tertiary);
+  font-size: .75rem;
+}
+
+.footer-cw {
+  width: 100%;
+  text-align: right;
+  color: var(--secondary);
 }

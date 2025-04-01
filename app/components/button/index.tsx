@@ -1,7 +1,7 @@
-import { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
+import { DetailedHTMLProps, FC, ButtonHTMLAttributes } from "react";
 import styles from './button.module.css'
 
-type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
     aria: {
         label: string
     },
@@ -13,10 +13,11 @@ export const Button: FC<Props> = ({
     children,
     aria,
     fullWidth,
-    variant
+    variant,
+    ...rest
 }) => {
     return <>
-        <button className={`${styles.button} ${fullWidth ? styles.full : ''} ${variant ? styles[variant] : ''}`} aria-label={aria.label}>{children}</button>
+        <button className={`${styles.button} ${fullWidth ? styles.full : ''} ${variant ? styles[variant] : ''}`} aria-label={aria.label} {...rest}>{children}</button>
     </>
 }
 

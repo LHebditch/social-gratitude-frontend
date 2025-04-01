@@ -17,3 +17,17 @@
     background-color: transparent;
     font-weight: 600;
 }
+
+.button:disabled {
+    background-color: var(--tertiary);
+    border-color: var(--tertiary);
+    color: var(--primary);
+    cursor: default;
+}
+
+.secondary:disabled {
+    background-color: transparent;
+    border-color: var(--tertiary);
+    color: var(--tertiary);
+    cursor: default;
+}

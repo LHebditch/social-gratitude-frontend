@@ -1,0 +1,20 @@
+.page {
+  min-height: 100%;
+  width: 100%;
+  margin: auto;
+  max-width: 500px;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 1rem 0;
+  max-height: 150px;
+}
+
+.nav {
+  padding: 1rem;
+}

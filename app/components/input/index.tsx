@@ -3,6 +3,7 @@ import styles from "./input.module.css";
 
 type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
     label: string;
+    labelDescription?: string;
     fullWidth?: boolean;
     asList?: boolean;
     aria: {
@@ -12,6 +13,7 @@ type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputE
 
 export const Input: FC<Props> = ({
     label,
+    labelDescription,
     fullWidth,
     asList,
     aria,
@@ -22,6 +24,7 @@ export const Input: FC<Props> = ({
     return <>
         <section className={`${styles['input-container']} ${asList ? "" : styles.stacked}`}>
             <label htmlFor={id} aria-describedby={id + 'description'}>{label}</label>
+            {labelDescription && <p className="subheader light pb">{labelDescription}</p>}
             <input id={id} className={`${styles.input} ${fullWidth ? styles.full : ''}`} {...rest} />
         </section>
         <p className={styles['hidden-description']} id={id + 'description'}>{aria.description}</p>

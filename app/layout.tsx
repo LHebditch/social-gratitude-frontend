@@ -29,7 +29,18 @@ export default function RootLayout({
         <main className={styles.main}>
           {children}
           <footer className={styles.footer}>
-            <p>this is the footer</p>
+            <h4 className="subheader">Sitemap</h4>
+
+            <p className="sitemap-link">
+              <a href="/home" aria-label="Go to home page">Home</a>
+            </p>
+            <p className="sitemap-link">
+              <a href="/journal" aria-label="Go to journal page">Journal</a>
+            </p>
+            <p className="sitemap-link">
+              <a href="/social" aria-label="Go to social page">Socail</a>
+            </p>
+            <p className="footer-cw">Created by l-h-solutions</p>
           </footer>
         </main>
       </body>

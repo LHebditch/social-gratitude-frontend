@@ -1,9 +1,9 @@
 "use client"
 
-import { ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes, useEffect, useId, useRef, useState } from "react";
+import { ChangeEvent, DetailedHTMLProps, FC, TextareaHTMLAttributes, useEffect, useId, useRef, useState } from "react";
 import styles from './textarea.module.css'
 
-type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & {
+type Props = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & {
     header: string
     fullWidth?: boolean
 }
@@ -11,10 +11,12 @@ type Props = DetailedHTMLProps<InputHTMLAttributes<HTMLTextAreaElement>, HTMLTex
 export const TextArea: FC<Props> = ({
     header,
     fullWidth,
+    onChange,
+    value: initialValue,
     ...rest
 }) => {
     const textAreaRef = useRef<HTMLTextAreaElement>(null)
-    const [value, setValue] = useState('')
+    const [value, setValue] = useState(initialValue)
     const id = useId()
 
     useEffect(() => {
@@ -26,8 +28,11 @@ export const TextArea: FC<Props> = ({
         }
     }, [textAreaRef, value])
 
-    const onChange = (ev: ChangeEvent<HTMLTextAreaElement>) => {
+    const internalOnChange = (ev: ChangeEvent<HTMLTextAreaElement>) => {
         setValue(ev.target.value)
+        if (!!onChange) {
+            onChange(ev)
+        }
     }
 
     return <section className={styles.container}>
@@ -36,7 +41,7 @@ export const TextArea: FC<Props> = ({
             className={`${styles.textarea} ${fullWidth ? styles.full : ''}`}
             ref={textAreaRef}
             value={value}
-            onChange={onChange}
+            onChange={internalOnChange}
             rows={1}
             placeholder="Write..."
             {...rest}

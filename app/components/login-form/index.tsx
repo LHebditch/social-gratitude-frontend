@@ -34,8 +34,10 @@ export function LoginForm() {
             // succesful completion redirects
             await completeLogin(tokenId, email, token)
         } catch (e: unknown) {
-            console.warn(e)
-            setOTPError(true)
+            if ((e as Error).message !== 'NEXT_REDIRECT') {
+                console.warn(e)
+                setOTPError(true)
+            }
         }
     }
 
@@ -51,8 +53,7 @@ export function LoginForm() {
                 </>
                 :
                 <>
-                    <p>We have sent a token to the email provided</p>
-                    <Input name="token" type="string" label="Token" fullWidth aria={{ description: "Please enter one off token" }} />
+                    <Input name="token" type="string" label="Token" labelDescription="We have sent a token to the email provided" fullWidth aria={{ description: "Please enter one off token" }} />
                     {otpError && <p className="error-message">Incorrect token value</p>}
                 </>
             }
