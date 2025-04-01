@@ -104,3 +104,13 @@ h4.subheader {
   text-align: right;
   color: var(--secondary);
 }
+
+.icon-btn {
+  background-color: transparent;
+  border: 0;
+  margin-left: 1rem;
+}
+
+.m0 {
+  margin: 0;
+}

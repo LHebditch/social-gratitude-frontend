@@ -1,40 +1,46 @@
 import { FC, ReactElement } from "react";
 import styles from './icon-navigation.module.css'
-import { HomeIcon } from "./icons/home-icon";
-import { JournalIcon } from "./icons/journal-icon";
-import { SocialIcon } from "./icons/social-icon";
+import { HomeIcon } from "../icons/home-icon";
+import { JournalIcon } from "../icons/journal-icon";
+import { SocialIcon } from "../icons/social-icon";
 
-export type Icon = 'home' | 'social' | 'journal';
+export type Icon = 'home' | 'social' | 'journal' | 'none';
 
 // icons were found here: https://www.svgrepo.com/collection/xnix-circular-interface-icons/8
 
 type Props = {
     active: Icon,
+    vertical?: boolean
 }
 
 export const IconNavigation: FC<Props> = ({
     active,
+    vertical = false
 }) => {
-    const icons: Icon[] = ['journal', 'home', 'social']
+    const icons: Icon[] = vertical ?
+        ['home', 'journal', 'social'] :
+        ['journal', 'home', 'social']
     const orderedIcons = reorderIcons(icons, active)
-    return <nav className={styles.navigation}>
+    return <nav className={`${styles.navigation} ${vertical ? styles.stacked : ''}`}>
         {orderedIcons.map(i => <a
             key={i}
-            className={`${styles.icon} ${i === active ? styles.active : active}`}
+            className={`${styles.icon} ${i === active ? styles.active : active} ${vertical ? styles.stackedIcon : ''}`}
             aria-label={`Go to ${i} page`}
             href={i === active ? '#' : `/${i}`}
         >
-            {getIcon(i, i === active)}
+            {getIcon(i, i === active, vertical)}
+            {vertical && <p>{i}</p>}
         </a>)}
     </nav>
 }
 
-const getIcon = (current: string, isActive: boolean): ReactElement => {
+const getIcon = (current: string, isActive: boolean, vertical: boolean = false): ReactElement => {
     const activeColor = 'var(--secondary)'
+    const standardColor = vertical ? '#fff' : undefined
     switch (current) {
-        case 'home': return <HomeIcon color={isActive ? activeColor : undefined} />
-        case 'journal': return <JournalIcon color={isActive ? activeColor : undefined} />
-        case 'social': return <SocialIcon color={isActive ? activeColor : undefined} />
+        case 'home': return <HomeIcon color={isActive ? activeColor : standardColor} />
+        case 'journal': return <JournalIcon color={isActive ? activeColor : standardColor} />
+        case 'social': return <SocialIcon color={isActive ? activeColor : standardColor} />
     }
 
     return <></>

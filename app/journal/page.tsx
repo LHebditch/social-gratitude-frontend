@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import styles from "./page.module.css";
 import Journal from "../components/journal"
 import { getUserInfo } from "../utils/actions";
-import IconNavigation from "../components/icon-navigation";
 import { getEntries, getInfluenceScore } from "./actions";
 import { FC } from "react";
 
@@ -26,9 +25,6 @@ export default async function JournalPage() {
         <section className={styles.entries}>
             <Journal storedEntries={todaysEntreis} />
         </section>
-        <section className={styles.footer}>
-            <IconNavigation active="journal" />
-        </section>
     </section>
 }
 
@@ -38,6 +34,6 @@ const ScoreBadge: FC<{ score: number }> = ({ score }) => {
         <div className={styles.influenceBadgeScore}>
             <p>{score}</p>
         </div>
-        <p className="subheader">You have inspired {score} people so far by sharing you&apos;re gratitude!</p>
+        <p className="subheader">You have inspired {score} people so far by sharing your gratitude!</p>
     </section>
 }

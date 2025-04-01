@@ -1,0 +1,32 @@
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 0vw;
+    background: linear-gradient(var(--primary), var(--secondary));
+    border: 2px solid var(--tertiary);
+    border-width: 0 2px 0 0;
+    transition: all .5s;
+}
+
+.sidebarOn {
+    width: 80vw;
+    padding: 1rem;
+}
+
+.closeButton {
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.navigation {
+    position: fixed;
+    top: 0;
+}
+
+.buffer {
+    padding-bottom: 2rem;
+}

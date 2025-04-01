@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import styles from "./page.module.css";
 import { getReactions, getSocialEntries, Reaction } from "./actions";
 import { getUserInfo } from "../utils/actions";
-import IconNavigation from "../components/icon-navigation";
 import EntryItem from "../components/EntryItem";
 
 export const metadata: Metadata = {
@@ -36,9 +35,6 @@ export default async function JournalPage() {
                         liked={!!likedEntries.some(r => r.id === e.id && `${e.index}` === r.index)} />
                 )
             }
-        </section>
-        <section className={styles.nav}>
-            <IconNavigation active="social" />
         </section>
     </section>
 }

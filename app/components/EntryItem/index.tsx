@@ -2,7 +2,7 @@
 
 import { SocialEntry } from "@/app/social/actions"
 import { FC, useState } from "react"
-import { HeartIcon } from "../icon-navigation/icons/heart copy"
+import { HeartIcon } from "../icons/heart-icon"
 import styles from './entryitem.module.css'
 import { react } from "./actions"
 
@@ -25,7 +25,7 @@ export const EntryItem: FC<Props> = ({ entry, loggedIn, liked }) => {
         <p className={styles['icon-p']}> {entry.entry} </p>
         < p className={styles.icon} >
             {loggedIn &&
-                <button className={styles['icon-btn']} disabled={isLiked} onClick={reactHandler} >
+                <button className='icon-btn' disabled={isLiked} onClick={reactHandler} >
                     <HeartIcon color="var(--primary)" filled={isLiked} />
                 </button>
             }
