@@ -16,6 +16,10 @@
     color: #fff;
 }
 
+.textarea::placeholder {
+    color: var(--secondary);
+}
+
 .full {
     width: 100%;
 }
