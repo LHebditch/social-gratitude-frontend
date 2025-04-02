@@ -7,6 +7,8 @@ type Props = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButt
     },
     fullWidth?: boolean
     variant?: string
+    inline?: boolean
+    cta?: boolean // is this a call to action button?
 }
 
 export const Button: FC<Props> = ({
@@ -14,10 +16,23 @@ export const Button: FC<Props> = ({
     aria,
     fullWidth,
     variant,
+    inline,
+    cta,
     ...rest
 }) => {
+
     return <>
-        <button className={`${styles.button} ${fullWidth ? styles.full : ''} ${variant ? styles[variant] : ''}`} aria-label={aria.label} {...rest}>{children}</button>
+        <button
+            className={`
+                ${styles.button + ' '}
+                ${(fullWidth ? styles.full : '') + ' '}
+                ${(variant ? styles[variant] : '') + ' '}
+                ${(inline ? styles.inline : '') + ' '}
+                ${(cta ? styles.cta : '') + ' '}`
+            }
+            aria-label={aria.label}
+            {...rest}>
+            {children}</button>
     </>
 }
 

@@ -31,3 +31,14 @@
     color: var(--tertiary);
     cursor: default;
 }
+
+.inline {
+    padding: .25rem 1rem;
+}
+
+.cta {
+    background: var(--cta);
+    color: var(--primary);
+    border: 0;
+    border-radius: 3rem;
+}

@@ -71,7 +71,7 @@ export const Journal: FC<Props> = ({
             <p className="subheader">
                 Try to think of things that you have not mentioned recently.
                 {' '}
-                Head over to the <a aria-label="social" href="/social">social</a> page for inspiration.
+                Head over to the <a aria-label="social" href="/social" className="cta">social</a> page for inspiration.
             </p>
         </hgroup>
         <section className={styles.entry}>

@@ -25,7 +25,7 @@ export default async function JournalPage() {
             <p className="subheader">See what others are grateful for</p>
         </hgroup>
         <section className={styles.entries}>
-
+            {!socialEntries.length && <p className="cta">No shared entries avaiable...</p>}
             {
                 socialEntries.map(e =>
                     <EntryItem

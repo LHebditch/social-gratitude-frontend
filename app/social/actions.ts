@@ -17,6 +17,7 @@ export async function getSocialEntries(): Promise<SocialEntry[]> {
     })
 
     if (d.status != 200) {
+        console.error('error featching social entries: ', d)
         const err = await d.text()
         throw new Error(err)
     }
@@ -38,6 +39,9 @@ export type Reaction = {
 export async function getReactions(entries: SocialEntry[]): Promise<Reaction[]> {
     const auth = await getAuthCookie()
     const entryIds = entries.map(e => `${e.id}/${e.index}`)
+    if (!entryIds.length) {
+        return []
+    }
     const d = await fetch(`${process.env.GRATITUDE_API_URL ?? ''}journal/reactions`, {
         method: 'POST',
         body: JSON.stringify({
@@ -49,6 +53,7 @@ export async function getReactions(entries: SocialEntry[]): Promise<Reaction[]> 
     })
 
     if (d.status != 200) {
+        console.error('error getting reactions', d)
         const err = await d.text()
         throw new Error(err)
     }

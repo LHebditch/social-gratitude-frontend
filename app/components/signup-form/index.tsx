@@ -48,21 +48,35 @@ export const SignupForm: FC = () => {
     const buttonText = otpRequested ? 'Confirm' : 'Signup'
     const buttonLabel = otpRequested ? 'Submit one off token' : 'Signup'
 
-    return <form className={styles.form} action={otpRequested ? doLogin : register}>
+    return <section className={styles.container}>
         <section>
-            {!otpRequested && <>
-                <Input name="email" type="email" label="Email" fullWidth aria={{ description: "Please enter email" }} />
-                <Input name="displayname" type="text" label="Display Name" fullWidth aria={{ description: "Please enter a display name" }} />
-            </>}
-            {otpRequested && <>
-                <Input name="token" type="string" label="Token" labelDescription="We have sent a token to the email provided" fullWidth aria={{ description: "Please enter one off token" }} />
-            </>}
-        </section >
-        <section>
-            {signupError && <p className="error-message">Registration failed: {signupError}</p>}
-            <Button aria={{ label: buttonLabel }} fullWidth>{buttonText}</Button>
+            <hgroup>
+                <h1>Sign up to start journaling</h1>
+                <br />
+                <p className="subheader">We use passwordless authentication for our login.</p>
+                <p className="subheader">When logging in we will send a one time password token that can be used to complete the login.</p>
+                <br />
+                <p className="subheader">We will only use your email for this purpose.</p>
+            </hgroup>
+            <br />
         </section>
-    </form >
+        <form className={styles.form} action={otpRequested ? doLogin : register}>
+            <section>
+                {!otpRequested && <>
+                    <Input name="email" type="email" label="Email" fullWidth aria={{ description: "Please enter email" }} />
+                    <br />
+                    <Input name="displayname" type="text" label="Display Name" fullWidth aria={{ description: "Please enter a display name" }} />
+                </>}
+                {otpRequested && <>
+                    <Input name="token" type="string" label="Token" labelDescription="We have sent a token to the email provided" fullWidth aria={{ description: "Please enter one off token" }} />
+                </>}
+            </section >
+            <section>
+                {signupError && <p className="error-message">Registration failed: {signupError}</p>}
+                <Button aria={{ label: buttonLabel }} fullWidth>{buttonText}</Button>
+            </section>
+        </form >
+    </section>
 }
 
 export default SignupForm

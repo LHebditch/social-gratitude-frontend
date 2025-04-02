@@ -30,6 +30,7 @@ export default async function JournalPage() {
 
 const ScoreBadge: FC<{ score: number }> = ({ score }) => {
     if (!score) return <></>
+
     return <section className={styles.influenceBadge}>
         <div className={styles.influenceBadgeScore}>
             <p>{score}</p>

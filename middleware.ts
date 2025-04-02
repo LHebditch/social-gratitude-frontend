@@ -32,7 +32,7 @@ export async function middleware(request: NextRequest) {
     return response
 }
 
-const checkJWT = async (token: string): Promise<JWTInfo> => {
+export const checkJWT = async (token: string): Promise<JWTInfo> => {
     console.log("secret:" + process.env.JWT_SECRET)
     const decoded = await jose.jwtVerify<JWTInfo>(token, new TextEncoder().encode(process.env.JWT_SECRET))
 
