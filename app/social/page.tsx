@@ -6,7 +6,7 @@ import EntryItem from "../components/EntryItem";
 
 export const metadata: Metadata = {
     title: "Social",
-    description: "Social gratitude, be inspired to stay grateful",
+    description: "Be inspired to stay grateful",
 };
 
 export default async function JournalPage() {

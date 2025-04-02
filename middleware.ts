@@ -9,6 +9,7 @@ type JWTInfo = {
     userId: string
 }
 export async function middleware(request: NextRequest) {
+    console.log('CHECKING JWT')
     const authToken = request.cookies.get('x-auth-token')
     if (!authToken) {
         return NextResponse.redirect(new URL('/login', request.url))
@@ -48,5 +49,5 @@ const checkJWT = async (token: string): Promise<JWTInfo> => {
 
 // See "Matching Paths" below to learn more
 export const config = {
-    matcher: ['/journal', '/'],
+    matcher: ['/journal'],
 }

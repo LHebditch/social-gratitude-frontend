@@ -1,3 +1,12 @@
 .form {
     min-width: 250px;
 }
+
+.signupLink {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.signupText {
+    font-weight: 200;
+}

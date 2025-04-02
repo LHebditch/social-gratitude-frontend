@@ -23,7 +23,7 @@ export const Input: FC<Props> = ({
 
     return <>
         <section className={`${styles['input-container']} ${asList ? "" : styles.stacked}`}>
-            <label htmlFor={id} aria-describedby={id + 'description'}>{label}</label>
+            <label htmlFor={id} aria-describedby={id + 'description'} className={styles.inputLabel}>{label}</label>
             {labelDescription && <p className="subheader light pb">{labelDescription}</p>}
             <input id={id} className={`${styles.input} ${fullWidth ? styles.full : ''}`} {...rest} />
         </section>

@@ -60,8 +60,12 @@ export function LoginForm() {
         </section>
         <section>
             <Button aria={{ label: buttonLabel }} fullWidth>{buttonText}</Button>
-        </section>
-    </form>
+            {!otpRequested && <>
+                <p className={styles.signupText}>New to gratilog? <a href="/signup" className={styles.signupLink}>Signup</a></p>
+            </>
+            }
+        </section >
+    </form >
 }
 
 
