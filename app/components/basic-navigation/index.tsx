@@ -5,9 +5,16 @@ import { MenuIcon } from "../icons/menu-icon";
 import styles from './navigation.module.css'
 import { CrossIcon } from "../icons/cross-icon";
 import IconNavigation from "../icon-navigation";
+import Button from "../button";
+import { signOut } from "./actions";
 
 export const Navigation: FC = () => {
     const [showMenu, setShowMenu] = useState(false)
+
+    const signout = async () => {
+        setShowMenu(false)
+        await signOut()
+    }
 
     return <>
         <section className={styles.navigation}>
@@ -25,6 +32,7 @@ export const Navigation: FC = () => {
                     </button>
                 </section>
                 <IconNavigation active="none" vertical />
+                <Button className={`${styles.signout} icon-btn`} aria={{ label: 'Sign out' }} onClick={signout}>Sign out</Button>
             </>}
         </section>
 
