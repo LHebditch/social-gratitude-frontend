@@ -1,0 +1,50 @@
+.quote {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.loadingDots {
+    display: flex;
+    align-items: baseline;
+}
+
+.loadingDots h2 {
+    padding-right: 0.5rem;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    margin-right: 5px;
+    background: var(--tertiary)
+}
+
+.d0 {
+    animation: bounce 1s infinite;
+    animation-delay: .1s;
+}
+
+.d1 {
+    animation: bounce 1s infinite;
+    animation-delay: .3s;
+}
+
+.d2 {
+    animation: bounce 1s infinite ease;
+    animation-delay: .5s;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: .0;
+
+    }
+}

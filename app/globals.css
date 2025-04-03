@@ -108,6 +108,7 @@ h4.subheader {
   width: 100%;
   text-align: right;
   color: var(--secondary);
+  padding: 0 1rem;
 }
 
 .icon-btn {
