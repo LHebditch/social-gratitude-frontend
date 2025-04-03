@@ -111,9 +111,13 @@ h4.subheader {
 }
 
 .icon-btn {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: transparent;
   border: 0;
   margin-left: 1rem;
+}
+
+.icon-btn.shadowed {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .m0 {

@@ -11,7 +11,7 @@ export const Navigation: FC = () => {
 
     return <>
         <section className={styles.navigation}>
-            <button className={`icon-btn m0`} onClick={() => setShowMenu(!showMenu)}>
+            <button className={`icon-btn shadowed m0`} onClick={() => setShowMenu(!showMenu)}>
                 <MenuIcon />
             </button>
         </section>
