@@ -24,7 +24,7 @@ export default async function HomePage() {
                     <h2 className="subheader">Share daily moments, and stay inspired by others</h2>
                 </hgroup>
 
-                <a href="/signup">
+                <a href="/login">
                     <Button
                         aria={{ label: "Signup to Gratilog" }}
                         cta>
@@ -87,7 +87,7 @@ export default async function HomePage() {
 
                 <section className={styles.ctaSection}>
                     <h2>A Gratitude Journal That Evolves With You</h2>
-                    <a href="/signup">
+                    <a href="/login">
                         <Button
                             aria={{ label: "Signup to Gratilog" }}
                             cta>

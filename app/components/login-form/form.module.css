@@ -10,3 +10,19 @@
 .signupText {
     font-weight: 200;
 }
+
+.loginFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginFormContainer h1,
+.loginFormContainer h2 {
+    text-align: center;
+}
+
+.loginFormContainer hgroup {
+    margin-bottom: 1rem;
+}

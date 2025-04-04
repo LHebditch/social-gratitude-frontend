@@ -25,7 +25,7 @@ export const PageLoading: FC = () => {
         newQuote('Thankfulness is the quickest path to joy', 'Jefferson Bethke'),
     ]
     const index = Math.ceil(Math.random() * quotes.length) - 1
-    console.log(index)
+
     const { quote, author } = quotes[index]
     return <section className={styles.quote}>
 

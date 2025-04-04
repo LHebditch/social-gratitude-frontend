@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
 import Journal from "../components/journal"
-import { getUserInfo } from "../utils/actions";
 import { getEntries, getInfluenceScore } from "./actions";
-import { FC } from "react";
+import { Welcome } from "../components/welcome";
 
 export const metadata: Metadata = {
     title: "Journal",
@@ -11,30 +10,14 @@ export const metadata: Metadata = {
 };
 
 export default async function JournalPage() {
-    const { displayName } = await getUserInfo()
+    const todaysEntreis = await getEntries();
     const { score } = await getInfluenceScore()
 
-    const todaysEntreis = await getEntries();
-
     return <section className={styles.page}>
-        <hgroup className={styles.greeting}>
-            <h1>Welcome,</h1>
-            <h2>{displayName}</h2>
-            <ScoreBadge score={score} />
-        </hgroup>
+        <Welcome score={score} />
         <section className={styles.entries}>
             <Journal storedEntries={todaysEntreis} />
         </section>
     </section>
 }
 
-const ScoreBadge: FC<{ score: number }> = ({ score }) => {
-    if (!score) return <></>
-
-    return <section className={styles.influenceBadge}>
-        <div className={styles.influenceBadgeScore}>
-            <p>{score}</p>
-        </div>
-        <p className="subheader">You have inspired {score} people so far by sharing your gratitude!</p>
-    </section>
-}

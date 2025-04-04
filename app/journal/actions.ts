@@ -21,6 +21,7 @@ export async function getEntries(): Promise<JournalEntries> {
 
     if (d.status != 200) {
         const err = await d.text()
+        console.error(d)
         throw new Error(err)
     }
 

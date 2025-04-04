@@ -6,13 +6,15 @@ import styles from './navigation.module.css'
 import { CrossIcon } from "../icons/cross-icon";
 import IconNavigation from "../icon-navigation";
 import Button from "../button";
-import { signOut } from "./actions";
+import { signOut as localSignOut } from "./actions";
+import { signOut } from 'next-auth/react';
 
 export const Navigation: FC = () => {
     const [showMenu, setShowMenu] = useState(false)
 
     const signout = async () => {
         setShowMenu(false)
+        await localSignOut()
         await signOut()
     }
 

@@ -1,0 +1,37 @@
+.greeting {
+  padding: 2rem 1rem;
+  width: 80%;
+  margin: auto;
+
+  @media (max-width: 375px) {
+    width: 100%;
+  }
+
+  @media (max-width: 650px) {
+    width: 90%;
+  }
+}
+
+.influenceBadge {
+  display: flex;
+  align-items: center;
+
+  margin: .5rem 0 0 0;
+}
+
+.influenceBadgeScore {
+  min-height: 25px;
+  min-width: 25px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffea6c;
+  border-radius: 100%;
+  font-weight: bold;
+  margin: 0 .5rem 0 0;
+  color: var(--primary);
+  flex: 0 0;
+
+}

@@ -1,71 +1,40 @@
 "use client"
 
-import { useState } from "react"
-import { commenceLogin, completeLogin } from "./actions";
-import Input from "../input";
-import Button from "../button";
+import { FC } from "react"
+
+import { signIn } from 'next-auth/react';
 import styles from './form.module.css'
 
+import Button from "../button";
+import Image from 'next/image'
+
+const GoogleAuth: FC = () => {
+
+    const handleSignIn = async () => signIn('google');
+
+    return <section className={styles.loginFormContainer}>
+        <hgroup>
+            <h1>Sign in to Gratilog</h1>
+            <h2 className="subheader">Sign in with your google account</h2>
+            <h2 className="subheader">We promise not to send you any emails!</h2>
+        </hgroup>
+        <Button
+            onClick={handleSignIn}
+            aria={{
+                label: 'Sign in with google'
+            }}
+
+            variant="login"
+        >
+            <Image src="/google.png" height={25} width={25} alt="google logo" />
+            Sign in with Google
+        </Button>
+    </section>
+}
 export function LoginForm() {
-    const [otpRequested, setOtpRequested] = useState(false)
-    const [email, setEmail] = useState('')
-    const [tokenId, setTokenId] = useState('')
-    const [emailError, setEmailError] = useState(false)
-    const [otpError, setOTPError] = useState(false)
-
-    const requestOTP = async (e: FormData) => {
-        setEmailError(false)
-        try {
-            const email = e.get('email')?.toString() ?? 'NONE'
-            const { tokenId: tid } = await commenceLogin(email)
-            setOtpRequested(true)
-            setTokenId(tid)
-            setEmail(email)
-        } catch (e: unknown) {
-            console.warn(e)
-            setEmailError(true)
-        }
-    }
-
-    const doLogin = async (e: FormData) => {
-        setOTPError(false)
-        try {
-            const token = e.get('token')?.toString() ?? 'NONE'
-            // succesful completion redirects
-            await completeLogin(tokenId, email, token)
-        } catch (e: unknown) {
-            if ((e as Error).message !== 'NEXT_REDIRECT') {
-                console.warn(e)
-                setOTPError(true)
-            }
-        }
-    }
-
-    const buttonText = otpRequested ? 'Submit' : 'Login'
-    const buttonLabel = otpRequested ? 'Submit one off token' : 'Login'
-
-    return <form className={styles.form} action={otpRequested ? doLogin : requestOTP}>
-        <section>
-            {!otpRequested ?
-                <>
-                    <Input name="email" type="email" label="Email" fullWidth aria={{ description: "Please enter email" }} />
-                    {emailError && <p className="error-message">Email not recognised</p>}
-                </>
-                :
-                <>
-                    <Input name="token" type="string" label="Token" labelDescription="We have sent a token to the email provided" fullWidth aria={{ description: "Please enter one off token" }} />
-                    {otpError && <p className="error-message">Incorrect token value</p>}
-                </>
-            }
-        </section>
-        <section>
-            <Button aria={{ label: buttonLabel }} fullWidth>{buttonText}</Button>
-            {!otpRequested && <>
-                <p className={styles.signupText}>New to gratilog? <a href="/signup" className={styles.signupLink}>Signup</a></p>
-            </>
-            }
-        </section >
-    </form >
+    return <>
+        <GoogleAuth />
+    </>
 }
 
 
