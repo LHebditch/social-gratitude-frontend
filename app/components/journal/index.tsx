@@ -15,6 +15,7 @@ type EntryChanges = {
 
 type Props = {
     storedEntries?: JournalEntries,
+    streak: number
 }
 
 const emptyChangeObject = { entry1: false, entry2: false, entry3: false }
@@ -22,6 +23,7 @@ const emptyJournalObject = { entry1: '', entry2: '', entry3: '' }
 
 export const Journal: FC<Props> = ({
     storedEntries,
+    streak,
 }) => {
     const [saved, setSaved] = useState(!!storedEntries?.entry1 || !!storedEntries?.entry2 || !!storedEntries?.entry3)
     const [changes, setChanges] = useState<EntryChanges>(emptyChangeObject)
@@ -64,7 +66,6 @@ export const Journal: FC<Props> = ({
     }
 
     const hasChanges = changes.entry1 || changes.entry2 || changes.entry3
-
     return <form className={styles.form} action={saveAction}>
         <hgroup className={styles.hgroup}>
             <h2 className={styles.title}>Today I am grateful for...</h2>
@@ -74,6 +75,11 @@ export const Journal: FC<Props> = ({
                 Head over to the <a aria-label="social" href="/social" className="cta">social</a> page for inspiration.
             </p>
         </hgroup>
+        <section>
+            {streak > 1 &&
+                <p className="subheader">You&apos;ve been consistently journalling for <span className="cta">{streak}</span> days, great stuff!</p>
+            }
+        </section>
         <section className={styles.entry}>
             <TextArea header="1." fullWidth name="entry1" onChange={triggerChangeHappened} value={entries.entry1} />
         </section>

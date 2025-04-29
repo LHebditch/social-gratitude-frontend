@@ -17,9 +17,11 @@ const Greeting: FC<{ score: number }> = ({ score }) => {
     const { user } = session ?? {}
 
     return <hgroup className={styles.greeting}>
-        <h1>Welcome, </h1>
-        < h2 > {user?.name} </h2>
-        < ScoreBadge score={score} />
+        <section>
+            <h1>Welcome, </h1>
+            < h2 > {user?.name} </h2>
+        </section>
+        <ScoreBadge score={score} />
     </hgroup>
 }
 
@@ -30,6 +32,6 @@ const ScoreBadge: FC<{ score: number }> = ({ score }) => {
         <div className={styles.influenceBadgeScore}>
             <p>{score} </p>
         </div>
-        < p className="subheader" > You have inspired {score} people so far by sharing your gratitude! </p>
+        < p className="subheader" >People have been inspired{' '}{score}{' '}times by you sharing your gratitude! </p>
     </section>
 }

@@ -126,7 +126,8 @@ h4.subheader {
 }
 
 p.cta,
-a.cta {
+a.cta,
+span.cta {
   color: var(--cta);
 }
 

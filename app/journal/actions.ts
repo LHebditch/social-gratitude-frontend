@@ -49,3 +49,23 @@ export async function getInfluenceScore(): Promise<{ score: number }> {
 
     return res
 }
+
+export async function getStreak(): Promise<{ streak: number }> {
+    const auth = await getAuthCookie()
+
+    const d = await fetch(`${process.env.GRATITUDE_API_URL ?? ''}journal/streak`, {
+        method: 'GET',
+        headers: {
+            "Authorization": auth?.value ?? '',
+        }
+    })
+
+    if (d.status != 200) {
+        const err = await d.text()
+        throw new Error(err)
+    }
+
+    const res = await d.json() as { streak: number };
+
+    return res
+}
