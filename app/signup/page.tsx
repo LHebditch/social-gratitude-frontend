@@ -4,7 +4,7 @@ import SignupForm from "../components/signup-form";
 
 export const metadata: Metadata = {
     title: "Signup",
-    description: "Signup to social gratitude",
+    description: "Signup to Gratilog",
 };
 
 export default function SignupPage() {

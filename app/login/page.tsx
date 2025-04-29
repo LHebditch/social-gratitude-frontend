@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Login",
-    description: "Login to social gratitude",
+    description: "Login to Gratilog",
 };
 
 export default function LoginPage() {
