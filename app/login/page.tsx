@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Login",
-    description: "Login to Gratilog",
+    description: "Social gratitude. Stay inspired to be grateful.",
 };
 
 export default function LoginPage() {

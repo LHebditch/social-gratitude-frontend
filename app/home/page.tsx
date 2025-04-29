@@ -10,7 +10,7 @@ import ShareIcon from "../components/icons/share-icon";
 
 export const metadata: Metadata = {
     title: "Home",
-    description: "Social gratitude, be inspired to stay grateful",
+    description: "Social gratitude. Stay inspired to be grateful.",
 };
 
 export default async function HomePage() {
