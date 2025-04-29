@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function JournalPage() {
-    const { email } = await getUserInfo()
-    const socialEntries = await getSocialEntries()
+    const { email, id } = await getUserInfo()
+    const socialEntries = (await getSocialEntries()).filter(e => e.userId != id)
     let likedEntries: Reaction[] = []
     const loggedIn = !!email;
 
@@ -32,6 +32,7 @@ export default async function JournalPage() {
                         key={`${e.id}-${e.index}`}
                         entry={e}
                         loggedIn={loggedIn}
+                        userId={id}
                         liked={!!likedEntries.some(r => r.id === e.id && `${e.index}` === r.index)} />
                 )
             }

@@ -7,6 +7,13 @@ import { authOptions } from '@/app/utils/config/authOptions';
 type UserInfo = {
     displayName: string
     email: string
+    id: string
+}
+
+type AuthUser = {
+    name: string
+    email: string
+    id: string
 }
 
 export async function getAuthCookie() {
@@ -23,9 +30,11 @@ export async function getUserInfo(): Promise<UserInfo> {
         return {} as UserInfo
     }
 
+    const u = user as AuthUser
     return {
-        displayName: user.name as string,
-        email: user.email as string
+        displayName: u.name as string,
+        email: u.email as string,
+        id: u.id as string
     }
     // try {
     //     const auth = await getAuthCookie()

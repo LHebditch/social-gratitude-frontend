@@ -32,6 +32,6 @@ const ScoreBadge: FC<{ score: number }> = ({ score }) => {
         <div className={styles.influenceBadgeScore}>
             <p>{score} </p>
         </div>
-        < p className="subheader" >People have been inspired{' '}{score}{' '}times by you sharing your gratitude! </p>
+        < p className="subheader" >people have been inspired{' '}{score}{' '}times by you sharing your gratitude! </p>
     </section>
 }

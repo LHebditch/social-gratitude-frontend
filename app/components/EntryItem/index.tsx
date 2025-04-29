@@ -10,8 +10,9 @@ type Props = {
     entry: SocialEntry
     loggedIn: boolean
     liked: boolean
+    userId?: string
 }
-export const EntryItem: FC<Props> = ({ entry, loggedIn, liked }) => {
+export const EntryItem: FC<Props> = ({ entry, loggedIn, liked, userId }) => {
     const [isLiked, setIsLiked] = useState(liked)
 
     const reactHandler = async () => {
@@ -19,6 +20,10 @@ export const EntryItem: FC<Props> = ({ entry, loggedIn, liked }) => {
 
         await react(entry.id, parseInt(entry.index, 10), entry.userId);
         setIsLiked(true)
+    }
+
+    if (userId === entry.userId) {
+        return <></>
     }
 
     return <article className={styles.entry}>

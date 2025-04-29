@@ -36,9 +36,9 @@ export const authOptions: AuthOptions = {
             }
         },
         async session({ token, session }) {
-            const { name, email } = token
+            const { name, email, sub } = token
 
-            return { ...session, user: { name, email } }
+            return { ...session, user: { name, email, id: sub } }
         },
         async redirect({ baseUrl }) {
             return baseUrl + '/journal'
