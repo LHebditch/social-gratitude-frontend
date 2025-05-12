@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { getReactions, getSocialEntries, type Reaction } from "./actions";
 import { getUserInfo } from "../utils/actions";
 import EntryItem from "../components/EntryItem";
+import Button from "../components/button";
 
 export const metadata: Metadata = {
     title: "Social",
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
 
 export default async function JournalPage() {
     const { email, id } = await getUserInfo()
-    const social = await getSocialEntries()
-    const socialEntries = social.entries?.filter(e => e.userId != id) ?? []
+    const { entries, nextToken } = await getSocialEntries()
+    const socialEntries = entries?.filter(e => e.userId != id) ?? []
     let likedEntries: Reaction[] = []
     const loggedIn = !!email;
 
@@ -36,6 +37,13 @@ export default async function JournalPage() {
                         userId={id}
                         liked={!!likedEntries.some(r => r.id === e.id && `${e.index}` === r.index)} />
                 )
+            }
+        </section>
+        <section>
+            {
+                nextToken && <Button aria={{
+                    label: "Load more inspiration"
+                }}>Load more</Button>
             }
         </section>
     </section>
