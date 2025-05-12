@@ -10,7 +10,12 @@ export type SocialEntry = {
     likes: number;
 }
 
-export async function getSocialEntries(): Promise<SocialEntry[]> {
+type SocialResponse = {
+    nextToken: string
+    entries: SocialEntry[]
+}
+
+export async function getSocialEntries(): Promise<SocialResponse> {
 
     const d = await fetch(`${process.env.GRATITUDE_API_URL ?? ''}journal/social`, {
         method: 'GET',
@@ -22,7 +27,7 @@ export async function getSocialEntries(): Promise<SocialEntry[]> {
         throw new Error(err)
     }
 
-    const res = await d.json() as SocialEntry[];
+    const res = await d.json() as SocialResponse;
 
     return res
 }

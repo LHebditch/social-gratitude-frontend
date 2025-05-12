@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
-import { getReactions, getSocialEntries, Reaction } from "./actions";
+import { getReactions, getSocialEntries, type Reaction } from "./actions";
 import { getUserInfo } from "../utils/actions";
 import EntryItem from "../components/EntryItem";
 
@@ -11,7 +11,8 @@ export const metadata: Metadata = {
 
 export default async function JournalPage() {
     const { email, id } = await getUserInfo()
-    const socialEntries = (await getSocialEntries()).filter(e => e.userId != id)
+    const social = await getSocialEntries()
+    const socialEntries = social.entries?.filter(e => e.userId != id) ?? []
     let likedEntries: Reaction[] = []
     const loggedIn = !!email;
 
