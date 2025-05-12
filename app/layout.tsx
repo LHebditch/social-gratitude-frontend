@@ -16,8 +16,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HEAD INFO NOT SET FOR PAGE",
-  description: "...",
+  title: {
+    template: '%s | Gratilog',
+    default: 'Gratilog - Social Gratitude Journal',
+  },
+  description: "Transform your mindset with gratitude journaling and community support",
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png' },
+    ],
+    shortcut: ['/shortcut-icon.png'],
+  },
+  manifest: '/manifest.json',
+  other: {
+    'msapplication-TileColor': '#042630',
+    'theme-color': '#042630',
+  },
 };
 
 export default function RootLayout({
