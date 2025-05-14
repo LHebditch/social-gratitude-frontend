@@ -6,7 +6,7 @@ import styles from './navigation.module.css'
 import { CrossIcon } from "../icons/cross-icon";
 import IconNavigation from "../icon-navigation";
 import Button from "../button";
-import { signOut as localSignOut } from "./actions";
+import { signOut as localSignOut } from "../../utils/actions";
 import { signOut } from 'next-auth/react';
 
 export const Navigation: FC = () => {

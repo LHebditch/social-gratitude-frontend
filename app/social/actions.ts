@@ -1,6 +1,7 @@
 'use server'
 
 import { getAuthCookie } from "../utils/actions";
+import { validateJWT } from "../utils/config/authOptions";
 
 export type SocialEntry = {
     entry: string;
@@ -43,6 +44,11 @@ export type Reaction = {
 
 export async function getReactions(entries: SocialEntry[]): Promise<Reaction[]> {
     const auth = await getAuthCookie()
+    const tokenIsValid = await validateJWT(auth?.value ?? '')
+    if (!tokenIsValid) {
+        return []
+    }
+
     const entryIds = entries.map(e => `${e.id}/${e.index}`)
     if (!entryIds.length) {
         return []

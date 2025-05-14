@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
 import { getReactions, getSocialEntries, type Reaction } from "./actions";
-import { getUserInfo } from "../utils/actions";
+import { getAuthCookie, getUserInfo } from "../utils/actions";
 import EntryItem from "../components/EntryItem";
 import Button from "../components/button";
+import { validateJWT } from "../utils/config/authOptions";
 
 export const metadata: Metadata = {
     title: "Social",
@@ -11,14 +12,20 @@ export const metadata: Metadata = {
 };
 
 export default async function JournalPage() {
-    const { email, id } = await getUserInfo()
+    const auth = await getAuthCookie()
+    const loggedIn = await validateJWT(auth?.value ?? '');
+
+    const { id } = await getUserInfo()
     const { entries, nextToken } = await getSocialEntries()
     const socialEntries = entries?.filter(e => e.userId != id) ?? []
     let likedEntries: Reaction[] = []
-    const loggedIn = !!email;
 
     if (loggedIn) {
-        likedEntries = await getReactions(socialEntries)
+        try {
+            likedEntries = await getReactions(socialEntries)
+        } catch (e: unknown) {
+            console.warn('unable to get reaction: JWT potentially timed out', e)
+        }
     }
 
     return <section className={styles.page}>

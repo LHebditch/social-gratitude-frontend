@@ -63,3 +63,16 @@ const newJWT = async (email: string, sub: string): Promise<string> => {
 
     return jwt;
 }
+
+export const validateJWT = async (jwt: string): Promise<boolean> => {
+    try {
+        await jose.jwtVerify(jwt, new TextEncoder().encode(process.env.JWT_SECRET), {
+            issuer: process.env.JWT_ISS ?? '',
+            audience: process.env.JWT_AUD ?? ''
+        })
+        return true
+    } catch (e: unknown) {
+        console.debug('jwt invalid', e)
+        return false;
+    }
+}

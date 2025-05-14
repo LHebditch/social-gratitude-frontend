@@ -12,8 +12,9 @@ type Props = {
     liked: boolean
     userId?: string
 }
+
 export const EntryItem: FC<Props> = ({ entry, loggedIn, liked, userId }) => {
-    const [isLiked, setIsLiked] = useState(liked)
+    const [isLiked, setIsLiked] = useState(liked ?? false)
 
     const reactHandler = async () => {
         if (isLiked) return

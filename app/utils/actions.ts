@@ -3,6 +3,7 @@
 import { cookies } from 'next/headers'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from '@/app/utils/config/authOptions';
+import { redirect } from 'next/navigation'
 
 type UserInfo = {
     displayName: string
@@ -57,4 +58,11 @@ export async function getUserInfo(): Promise<UserInfo> {
     //     console.debug('Failed to get user info', (e as Error).message)
     //     return { displayName: '', email: '' }
     // }
+}
+
+export const signOut = async (redirectPath = '/') => {
+    const cookieStore = await cookies()
+    cookieStore.delete('x-auth-token')
+
+    redirect(redirectPath)
 }
